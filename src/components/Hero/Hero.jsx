@@ -52,8 +52,29 @@ const Hero = () => {
   const [inputMode, setInputMode] = useState('manual'); // 'manual' or 'iot'
   const [showFuturePerkModal, setShowFuturePerkModal] = useState(false);
   
-  // Initialize Gemini AI
-  const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GOOGLE_AI_API_KEY);
+  // Initialize Gemini AI with API key rotation logic
+  const getActiveAPIKey = async () => {
+    try {
+      // Try primary key first
+      const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models', {
+        headers: { 'x-goog-api-key': import.meta.env.VITE_GOOGLE_AI_API_KEY }
+      });
+      if (response.ok) return import.meta.env.VITE_GOOGLE_AI_API_KEY;
+    } catch {
+      // If primary fails, use secondary key
+      return import.meta.env.VITE_GOOGLE_AI_API_KEY_2;
+    }
+  };
+  
+  const [genAI, setGenAI] = useState(null);
+
+  useEffect(() => {
+    const initializeGenAI = async () => {
+      const activeKey = await getActiveAPIKey();
+      setGenAI(new GoogleGenerativeAI(activeKey));
+    };
+    initializeGenAI();
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {

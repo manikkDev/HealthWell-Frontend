@@ -80,7 +80,16 @@ Follow these steps to set up and run **HealthWell** locally.
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/manikkDev/HealthWell-Frontend.git
-Go to the file
+2. **Go to the file**
    ```bash
    cd HealthWell-Frontend
 
+## Contributing
+Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request. 
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+
+## Contact
+Your Name - [manikraj8433@gmail.com](mailto:manikraj8433@gmail.com) 
+Project Link: [https://github.com/manikkDev/HealthWell-Frontend](https://github.com/manikkdev/HealthWell-Frontend)

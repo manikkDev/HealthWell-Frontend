@@ -1,0 +1,220 @@
+/* Custom Cursor Animation Styles */
+
+/* Hide default cursor */
+
+
+/* Main cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+.custom-cursor.visible {
+  opacity: 1;
+}
+
+.custom-cursor.clicking {
+  transform: scale(0.8) !important;
+}
+
+.cursor-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #10b981, #06d6a0);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.1s ease;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+}
+
+.cursor-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Trail elements */
+.cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  will-change: transform, opacity;
+}
+
+.cursor-trail.visible {
+  opacity: 1;
+}
+
+.trail-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(135deg, #10b981, #06d6a0);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
+}
+
+/* Different trail sizes for depth effect */
+.cursor-trail-0 .trail-dot {
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(135deg, #10b981, #06d6a0);
+}
+
+.cursor-trail-1 .trail-dot {
+  width: 5px;
+  height: 5px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(6, 214, 160, 0.9));
+}
+
+.cursor-trail-2 .trail-dot {
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(6, 214, 160, 0.8));
+}
+
+.cursor-trail-3 .trail-dot {
+  width: 3px;
+  height: 3px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.7), rgba(6, 214, 160, 0.7));
+}
+
+.cursor-trail-4 .trail-dot,
+.cursor-trail-5 .trail-dot,
+.cursor-trail-6 .trail-dot,
+.cursor-trail-7 .trail-dot {
+  width: 2px;
+  height: 2px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.6), rgba(6, 214, 160, 0.6));
+}
+
+/* Hover effects for interactive elements */
+a:hover ~ .custom-cursor .cursor-inner,
+button:hover ~ .custom-cursor .cursor-inner,
+.clickable:hover ~ .custom-cursor .cursor-inner {
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #06d6a0, #10b981);
+  box-shadow: 0 0 15px rgba(6, 214, 160, 0.8);
+}
+
+a:hover ~ .custom-cursor .cursor-glow,
+button:hover ~ .custom-cursor .cursor-glow,
+.clickable:hover ~ .custom-cursor .cursor-glow {
+  width: 32px;
+  height: 32px;
+  background: radial-gradient(circle, rgba(6, 214, 160, 0.4) 0%, transparent 70%);
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.3;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+/* Click ripple effect */
+.custom-cursor.clicking::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(16, 185, 129, 0.6);
+  border-radius: 50%;
+  animation: ripple 0.6s ease-out;
+}
+
+/* Performance optimizations */
+.custom-cursor,
+.cursor-trail {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .custom-cursor,
+  .cursor-trail {
+    display: none;
+  }
+  
+  * {
+    cursor: auto !important;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor,
+  .cursor-trail {
+    display: none;
+  }
+  
+  * {
+    cursor: auto !important;
+  }
+  
+  .cursor-glow {
+    animation: none;
+  }
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .cursor-inner {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.6);
+}
+
+[data-theme="dark"] .cursor-glow {
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.3) 0%, transparent 70%);
+}
+
+[data-theme="dark"] .trail-dot {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  box-shadow: 0 0 6px rgba(52, 211, 153, 0.4);
+}

@@ -1,0 +1,259 @@
+/* Advanced Background Effects with Theme Support */
+
+.particle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+}
+
+/* Geometric Background Shapes */
+.geometric-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  background: var(--health-gradient);
+  opacity: 0.08;
+  filter: blur(2px);
+  transition: all var(--transition-smooth);
+  border-radius: var(--radius-2xl);
+}
+
+.shape-1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  right: 10%;
+  animation: morphing 12s ease-in-out infinite,
+             float 8s ease-in-out infinite;
+  animation-delay: 0s, 2s;
+}
+
+.shape-2 {
+  width: 200px;
+  height: 200px;
+  bottom: 20%;
+  left: 15%;
+  animation: morphing 15s ease-in-out infinite,
+             float 10s ease-in-out infinite;
+  animation-delay: 3s, 1s;
+}
+
+.shape-3 {
+  width: 150px;
+  height: 150px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: morphing 10s ease-in-out infinite,
+             float 6s ease-in-out infinite;
+  animation-delay: 1.5s, 0.5s;
+}
+
+/* Gradient Orbs */
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--health-gradient);
+  opacity: 0.12;
+  filter: blur(3px);
+  animation: float 12s ease-in-out infinite,
+             glow-pulse 6s ease-in-out infinite;
+  transition: all var(--transition-smooth);
+}
+
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  top: -200px;
+  left: -200px;
+  animation-delay: 0s, 1s;
+}
+
+.orb-2 {
+  width: 300px;
+  height: 300px;
+  bottom: -150px;
+  right: -150px;
+  animation-delay: 4s, 3s;
+}
+
+.orb-3 {
+  width: 250px;
+  height: 250px;
+  top: 30%;
+  right: -125px;
+  animation-delay: 2s, 0s;
+}
+
+/* Animated Grid Pattern */
+.grid-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.03;
+  background-image: 
+    linear-gradient(var(--primary-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--primary-color) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* Enhanced Bubble Animations */
+@keyframes bubble-rise-enhanced {
+  0% {
+    transform: translateY(100vh) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+    transform: translateY(90vh) scale(0.3) rotate(45deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(50vh) scale(1) rotate(180deg);
+  }
+  90% {
+    opacity: 0.8;
+    transform: translateY(10vh) scale(0.8) rotate(315deg);
+  }
+  100% {
+    transform: translateY(-10vh) scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Override bubble animation for enhanced version */
+.bubble {
+  animation: bubble-rise-enhanced 18s linear infinite;
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .shape-1 {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .shape-2 {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .shape-3 {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .orb-1 {
+    width: 250px;
+    height: 250px;
+    top: -125px;
+    left: -125px;
+  }
+  
+  .orb-2 {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    right: -100px;
+  }
+  
+  .orb-3 {
+    width: 150px;
+    height: 150px;
+    right: -75px;
+  }
+  
+  .grid-pattern {
+    background-size: 30px 30px;
+  }
+  
+  @keyframes grid-move {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(30px, 30px);
+    }
+  }
+}
+
+/* Dark Mode Adjustments */
+:root.dark .shape {
+  opacity: 0.04;
+  filter: blur(3px);
+}
+
+:root.dark .gradient-orb {
+  opacity: 0.06;
+  filter: blur(4px);
+}
+
+:root.dark .bubble.green {
+  background: var(--bubble-green-dark);
+  box-shadow: 0 0 20px var(--bubble-green-dark);
+}
+
+:root.dark .bubble.pink {
+  background: var(--bubble-pink-dark);
+  box-shadow: 0 0 20px var(--bubble-pink-dark);
+}
+
+:root.dark .bubble.cyan {
+  background: var(--bubble-cyan-dark);
+  box-shadow: 0 0 20px var(--bubble-cyan-dark);
+}
+
+:root.dark .particle.green {
+  background: var(--bubble-green-dark);
+}
+
+:root.dark .particle.pink {
+  background: var(--bubble-pink-dark);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .bubble,
+  .particle,
+  .shape,
+  .gradient-orb,
+  .grid-pattern {
+    animation: none !important;
+  }
+  
+  .shape,
+  .gradient-orb {
+    opacity: 0.05;
+  }
+}

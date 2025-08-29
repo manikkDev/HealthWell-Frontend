@@ -53,7 +53,7 @@ const Hero = () => {
   const [showFuturePerkModal, setShowFuturePerkModal] = useState(false);
   
   // Initialize Gemini AI
-  const genAI = new GoogleGenerativeAI('AIzaSyCys3nN1aicVWHbb1_JABxk4riXlOy11G8');
+  const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GOOGLE_AI_API_KEY);
 
   useEffect(() => {
     const timer = setInterval(() => {

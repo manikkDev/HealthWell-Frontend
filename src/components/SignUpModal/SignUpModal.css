@@ -229,7 +229,7 @@
 .form-group label {
   display: block;
   font-weight: 600;
-  color: #374151;
+  color: #f1f5f9 !important; /* Force white text */
   margin-bottom: 8px;
   font-size: 14px;
 }
@@ -244,8 +244,9 @@
   border: 2px solid #e5e7eb;
   border-radius: 12px;
   font-size: 16px;
-  background: #ffffff;
-  color: #374151; /* Added for visibility in light mode */
+  background: #ffffff !important;
+  color: #1f2937 !important; /* Force dark text in light mode */
+  -webkit-text-fill-color: #1f2937 !important;
   transition: all 0.2s ease;
   box-sizing: border-box;
 }
@@ -577,7 +578,7 @@
   }
   
   .form-group label {
-    color: #f1f5f9;
+    color: #f1f5f9 !important; /* Force white text */
   }
   
   .input-wrapper input {
@@ -587,12 +588,12 @@
   }
   
   .input-wrapper input::placeholder {
-  color: #64748b; /* Darker color for light mode */
+  color: #64748b !important; /* Darker color for light mode */
 }
 
 @media (prefers-color-scheme: dark) {
   .input-wrapper input::placeholder {
-    color: #94a3b8;
+    color: #94a3b8 !important;
   }
 }
   

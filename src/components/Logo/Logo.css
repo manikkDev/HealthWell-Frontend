@@ -31,11 +31,11 @@
   filter: drop-shadow(0 4px 15px var(--primary-400));
 }
 
-/* Outer Ring Animation */
+/* Outer Ring Animation - rotation removed for better mobile performance */
 .logo-ring {
   stroke-dasharray: 283;
   stroke-dashoffset: 283;
-  animation: drawRing 2s ease-in-out forwards, rotateRing 8s linear infinite 2s; /* Reduced rotation frequency for better performance */
+  animation: drawRing 2s ease-in-out forwards;
   transform-origin: center;
 }
 
@@ -54,9 +54,8 @@
   }
 }
 
-/* Heart Animation */
+/* Heart Animation - infinite animation removed for better mobile performance */
 .logo-heart {
-  animation: heartbeat 2s ease-in-out infinite;
   transform-origin: center;
 }
 
@@ -90,10 +89,10 @@
   }
 }
 
-/* Pulse Dots */
+/* Pulse Dots - infinite animation removed for better mobile performance */
 .pulse-dot {
-  animation: pulseDot 2s ease-in-out infinite;
   transform-origin: center;
+  opacity: 0.7;
 }
 
 .pulse-dot-1 {

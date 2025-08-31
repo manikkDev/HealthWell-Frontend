@@ -1,6 +1,6 @@
 import './App.css';
 import BackgroundEffects from './components/BackgroundEffects/BackgroundEffects.jsx';
-import CursorAnimation from './components/CursorAnimation/CursorAnimation.jsx';
+// Cursor animation removed for better mobile performance
 import Hero from './components/Hero/Hero.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import { LanguageProvider } from './contexts/LanguageContext.jsx';
@@ -13,7 +13,7 @@ function App() {
       <LanguageProvider>
         <UserProvider>
           <div className="App">
-            <CursorAnimation />
+            {/* Cursor animation removed for better mobile performance */}
             <BackgroundEffects />
             <div className="content-wrapper">
               <Navbar />

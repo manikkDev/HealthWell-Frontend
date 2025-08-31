@@ -156,36 +156,53 @@ button {
   }
 }
 
+/* Performance optimizations for animated elements */
+.fade-in {
+  will-change: opacity;
+}
+
+.slide-in {
+  will-change: transform;
+}
+
+.scale-animation {
+  will-change: transform;
+}
+
+.pulse-animation {
+  will-change: transform, opacity;
+}
+
 @keyframes slideInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translate3d(0, 30px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translate3d(-30px, 0, 0);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes slideInRight {
   from {
     opacity: 0;
-    transform: translateX(30px);
+    transform: translate3d(30px, 0, 0);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -212,18 +229,67 @@ button {
 @keyframes bounceIn {
   0% {
     opacity: 0;
-    transform: scale(0.3);
+    transform: scale3d(0.3, 0.3, 1);
   }
   50% {
     opacity: 1;
-    transform: scale(1.05);
+    transform: scale3d(1.05, 1.05, 1);
   }
   70% {
-    transform: scale(0.9);
+    transform: scale3d(0.9, 0.9, 1);
   }
   100% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation duration on mobile */
+  .fade-in,
+  .slide-in,
+  .scale-animation,
+  .pulse-animation {
+    animation-duration: 0.3s !important;
+  }
+  
+  /* Disable complex animations on mobile */
+  @keyframes bounceIn {
+    0% {
+      transform: scale3d(0.8, 0.8, 1);
+      opacity: 0;
+    }
+    100% {
+      transform: scale3d(1, 1, 1);
+      opacity: 1;
+    }
+  }
+  
+  /* Optimize glass effects on mobile */
+  .card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  /* Disable backdrop filters on very small screens */
+  @media (max-width: 480px) {
+    .card {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: rgba(255, 255, 255, 0.95);
+    }
+  }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -261,6 +327,8 @@ button {
   padding: var(--spacing-xl);
   box-shadow: var(--glass-shadow);
   transition: all var(--transition-smooth);
+  will-change: transform, box-shadow;
+  contain: layout style;
 }
 
 .card:hover {

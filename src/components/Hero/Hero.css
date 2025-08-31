@@ -23,6 +23,7 @@
   width: 100%;
   height: 100%;
   z-index: 1;
+  contain: layout style paint;
 }
 
 /* Medical Animations Container */
@@ -32,9 +33,11 @@
   height: 100%;
   overflow: hidden;
   pointer-events: none;
+  contain: layout style paint;
+  will-change: auto;
 }
 
-/* Medical Icons */
+/* Medical Icons - Optimized for Mobile */
 .medical-icon {
   position: absolute;
   width: 60px;
@@ -43,6 +46,8 @@
   color: var(--primary-color);
   animation: medicalFloat 15s ease-in-out infinite;
   filter: drop-shadow(0 0 10px var(--primary-color));
+  will-change: transform, opacity;
+  contain: layout style paint;
 }
 
 .medical-icon svg {
@@ -54,16 +59,17 @@
 .stethoscope-icon {
   top: 15%;
   left: 8%;
-  animation-delay: 0s;
+  animation-delay: 2s;
   color: var(--primary-color);
 }
 
 .heartbeat-icon {
   top: 25%;
   right: 12%;
-  animation-delay: 3s;
+  animation-delay: 4s;
   color: #ef4444;
   animation: medicalFloat 15s ease-in-out infinite, heartbeatPulse 2s ease-in-out infinite;
+  will-change: transform, filter;
 }
 
 .dna-icon {
@@ -72,49 +78,51 @@
   animation-delay: 6s;
   color: var(--secondary-color);
   animation: medicalFloat 15s ease-in-out infinite, dnaRotate 8s linear infinite;
+  will-change: transform;
 }
 
 .cross-icon {
   bottom: 25%;
   right: 8%;
-  animation-delay: 9s;
+  animation-delay: 8s;
   color: #10b981;
 }
 
 .pill-icon {
   top: 60%;
   left: 45%;
-  animation-delay: 12s;
+  animation-delay: 10s;
   color: #8b5cf6;
   animation: medicalFloat 15s ease-in-out infinite, pillRotate 6s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes medicalFloat {
   0%, 100% {
-    transform: translateY(0px) translateX(0px) scale(1);
+    transform: translate3d(0px, 0px, 0) scale(1);
     opacity: 0.6;
   }
   25% {
-    transform: translateY(-30px) translateX(15px) scale(1.1);
+    transform: translate3d(15px, -30px, 0) scale(1.1);
     opacity: 0.8;
   }
   50% {
-    transform: translateY(-60px) translateX(-10px) scale(0.9);
+    transform: translate3d(-10px, -60px, 0) scale(0.9);
     opacity: 1;
   }
   75% {
-    transform: translateY(-30px) translateX(-20px) scale(1.05);
+    transform: translate3d(-20px, -30px, 0) scale(1.05);
     opacity: 0.7;
   }
 }
 
 @keyframes heartbeatPulse {
   0%, 100% {
-    transform: scale(1);
+    transform: scale3d(1, 1, 1);
     filter: drop-shadow(0 0 10px #ef4444);
   }
   50% {
-    transform: scale(1.2);
+    transform: scale3d(1.2, 1.2, 1);
     filter: drop-shadow(0 0 20px #ef4444) drop-shadow(0 0 30px #ef4444);
   }
 }
@@ -246,23 +254,25 @@
   letter-spacing: -0.02em;
   transform: translateY(0);
   opacity: 1;
+  will-change: transform, opacity, filter;
+  contain: layout style;
 }
 
 /* Enhanced Title Animations */
 @keyframes titleSlideIn {
   0% {
     opacity: 0;
-    transform: translateY(-50px) scale(0.8);
+    transform: translate3d(0, -50px, 0) scale(0.8);
     filter: blur(10px);
   }
   50% {
     opacity: 0.7;
-    transform: translateY(-10px) scale(0.95);
+    transform: translate3d(0, -10px, 0) scale(0.95);
     filter: blur(2px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
     filter: blur(0);
   }
 }
@@ -431,7 +441,7 @@
   color: var(--text-secondary);
   font-weight: 400;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  animation: descriptionFadeIn 2s ease-out 0.6s both;
+  animation: descriptionFadeIn 2s ease-out 1.2s both;
   position: relative;
   letter-spacing: 0.3px;
 }
@@ -443,35 +453,39 @@
   gap: 3rem;
   max-width: 1000px;
   margin: 0 auto;
-  animation: slideInUp 1s ease-out 0.8s both, actionsFloat 6s ease-in-out infinite;
+  animation: slideInUp 1s ease-out 1.8s both, actionsFloat 6s ease-in-out 3s infinite;
+  will-change: transform;
+  contain: layout style;
 }
 
 @keyframes actionsFloat {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translate3d(0, 0px, 0) rotate(0deg);
   }
   33% {
-    transform: translateY(-8px) rotate(0.5deg);
+    transform: translate3d(0, -8px, 0) rotate(0.5deg);
   }
   66% {
-    transform: translateY(-15px) rotate(-0.5deg);
+    transform: translate3d(0, -15px, 0) rotate(-0.5deg);
   }
 }
 
-/* Enhanced Floating Animation */
+/* Enhanced Floating Animation - Mobile Optimized */
 .floating-animation {
-  animation: float 6s ease-in-out infinite, subtleGlow 4s ease-in-out infinite alternate;
+  animation: float 6s ease-in-out 2.5s infinite, subtleGlow 4s ease-in-out 4s infinite alternate;
+  will-change: transform, box-shadow;
+  contain: layout style;
 }
 
 @keyframes float {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translate3d(0, 0px, 0) rotate(0deg);
   }
   33% {
-    transform: translateY(-8px) rotate(0.5deg);
+    transform: translate3d(0, -8px, 0) rotate(0.5deg);
   }
   66% {
-    transform: translateY(-15px) rotate(-0.5deg);
+    transform: translate3d(0, -15px, 0) rotate(-0.5deg);
   }
 }
 
@@ -540,6 +554,8 @@
   transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
+  will-change: transform, box-shadow;
+  contain: layout style paint;
 }
 
 .document-section::before {
@@ -577,6 +593,8 @@
   transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
+  will-change: transform, box-shadow;
+  contain: layout style paint;
 }
 
 /* Enhanced Light Theme Styling */
@@ -1535,6 +1553,8 @@
   left: 0;
   width: 100%;
   height: 100%;
+  contain: layout style paint;
+  will-change: auto;
 }
 
 .particle {
@@ -3883,6 +3903,8 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  contain: layout style paint;
+  will-change: auto;
 }
 
 .particle {
@@ -4527,6 +4549,10 @@
   color: #ffffff;
   overflow: hidden;
   margin-top: 100px;
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  will-change: auto;
+  contain: layout style;
 }
 
 .footer-background {
@@ -4536,6 +4562,7 @@
   width: 100%;
   height: 100%;
   z-index: 1;
+  contain: layout style paint;
 }
 
 .footer-wave {
@@ -4546,6 +4573,8 @@
   height: 100px;
   background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
   opacity: 0.3;
+  contain: layout style;
+  will-change: transform;
   animation: waveFlow 8s ease-in-out infinite;
   transform: skewY(-2deg);
 }
@@ -4560,6 +4589,8 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  contain: layout style paint;
+  will-change: auto;
 }
 
 .particle {
@@ -4826,6 +4857,112 @@
 
 .badge:hover::before {
   left: 100%;
+}
+
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  .medical-icon {
+    animation-duration: 20s; /* Slower animations */
+  }
+  
+  .heartbeat-icon {
+    animation: medicalFloat 20s ease-in-out infinite; /* Remove heartbeat pulse on mobile */
+  }
+  
+  .dna-icon {
+    animation: medicalFloat 20s ease-in-out infinite; /* Remove DNA rotation on mobile */
+  }
+  
+  .pill-icon {
+    animation: medicalFloat 20s ease-in-out infinite; /* Remove pill rotation on mobile */
+  }
+  
+  /* Reduce floating animation intensity */
+  .floating-animation {
+    animation: floatMobile 8s ease-in-out infinite;
+  }
+  
+  /* Simplified mobile float animation */
+  @keyframes floatMobile {
+    0%, 100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -5px, 0);
+    }
+  }
+  
+  /* Reduce backdrop blur on mobile for better performance */
+  .document-section,
+  .question-section {
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+  }
+  
+  /* Optimize footer backdrop filter on mobile */
+  .professional-footer {
+    backdrop-filter: blur(10px) saturate(130%);
+    -webkit-backdrop-filter: blur(10px) saturate(130%);
+  }
+  
+  /* Reduce glass effects on mobile */
+  .badge {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  /* Optimize particle animations for mobile */
+  .particle {
+    animation-duration: 25s; /* Slower animation */
+  }
+
+  .health-particles .particle {
+    animation-duration: 30s; /* Even slower for health particles */
+  }
+
+  .footer-particles .particle {
+    animation-duration: 20s; /* Moderate speed for footer particles */
+  }
+
+  /* Further optimize floating animations */
+  .floating-animation {
+    animation: floatMobile 10s ease-in-out infinite; /* Remove glow animation */
+  }
+  
+  /* Disable heavy visual effects on very small screens */
+  @media (max-width: 480px) {
+    .document-section,
+    .question-section,
+    .professional-footer {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: rgba(15, 23, 42, 0.9);
+    }
+    
+    .badge {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    /* Disable particle animations on very small screens */
+    .particle {
+      animation: none;
+      opacity: 0.3;
+    }
+
+    .medical-particles,
+    .health-particles,
+    .footer-particles {
+      display: none; /* Hide particles entirely on very small screens */
+    }
+
+    /* Disable floating animations on very small screens */
+    .floating-animation {
+      animation: none;
+      transform: none;
+    }
+  }
 }
 
 /* Footer Responsive Design */

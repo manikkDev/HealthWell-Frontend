@@ -38,7 +38,7 @@
   height: 300px;
   top: 10%;
   right: 10%;
-  animation: morphing 12s ease-in-out infinite,
+  animation: morphing 20s ease-in-out infinite, /* Reduced frequency for better mobile performance */
              float 8s ease-in-out infinite;
   animation-delay: 0s, 2s;
 }
@@ -48,7 +48,7 @@
   height: 200px;
   bottom: 20%;
   left: 15%;
-  animation: morphing 15s ease-in-out infinite,
+  animation: morphing 25s ease-in-out infinite, /* Reduced frequency for better mobile performance */
              float 10s ease-in-out infinite;
   animation-delay: 3s, 1s;
 }
@@ -59,7 +59,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: morphing 10s ease-in-out infinite,
+  animation: morphing 18s ease-in-out infinite, /* Reduced frequency for better mobile performance */
              float 6s ease-in-out infinite;
   animation-delay: 1.5s, 0.5s;
 }
@@ -114,7 +114,7 @@
     linear-gradient(var(--primary-color) 1px, transparent 1px),
     linear-gradient(90deg, var(--primary-color) 1px, transparent 1px);
   background-size: 50px 50px;
-  animation: grid-move 20s linear infinite;
+  animation: grid-move 30s linear infinite; /* Reduced frequency for better mobile performance */
 }
 
 @keyframes grid-move {
@@ -152,7 +152,7 @@
 
 /* Override bubble animation for enhanced version */
 .bubble {
-  animation: bubble-rise-enhanced 18s linear infinite;
+  animation: bubble-rise-enhanced 25s linear infinite; /* Reduced frequency for better mobile performance */
   backdrop-filter: blur(2px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }

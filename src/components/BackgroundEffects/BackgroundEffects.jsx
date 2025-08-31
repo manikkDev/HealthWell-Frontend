@@ -8,7 +8,7 @@ const BackgroundEffects = () => {
   useEffect(() => {
     // Generate bubbles
     const bubbleArray = [];
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 8; i++) { // Reduced from 15 to 8 for better mobile performance
       bubbleArray.push({
         id: i,
         size: Math.random() * 60 + 20, // 20-80px
@@ -22,7 +22,7 @@ const BackgroundEffects = () => {
 
     // Generate particles
     const particleArray = [];
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 15; i++) { // Reduced from 30 to 15 for better mobile performance
       particleArray.push({
         id: i,
         left: Math.random() * 100,

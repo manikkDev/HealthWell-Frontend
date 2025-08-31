@@ -1480,7 +1480,7 @@ Please provide the updated report that addresses the user's question within the 
       <div className="footer-background">
         <div className="footer-wave"></div>
         <div className="footer-particles">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(10)].map((_, i) => ( // Reduced from 20 to 10 for better mobile performance
             <div key={i} className={`particle particle-${i % 4}`}></div>
           ))}
         </div>

@@ -38,9 +38,7 @@
   height: 300px;
   top: 10%;
   right: 10%;
-  /* Morphing animation removed for better mobile performance */
-  animation: float 8s ease-in-out infinite;
-  animation-delay: 2s;
+  /* Float animation removed to fix scroll lag */
 }
 
 .shape-2 {
@@ -48,9 +46,7 @@
   height: 200px;
   bottom: 20%;
   left: 15%;
-  /* Morphing animation removed for better mobile performance */
-  animation: float 10s ease-in-out infinite;
-  animation-delay: 1s;
+  /* Float animation removed to fix scroll lag */
 }
 
 .shape-3 {
@@ -59,9 +55,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* Morphing animation removed for better mobile performance */
-  animation: float 6s ease-in-out infinite;
-  animation-delay: 0.5s;
+  /* Float animation removed to fix scroll lag */
 }
 
 /* Gradient Orbs */
@@ -71,8 +65,7 @@
   background: var(--health-gradient);
   opacity: 0.12;
   filter: blur(3px);
-  animation: float 12s ease-in-out infinite,
-             glow-pulse 6s ease-in-out infinite;
+  /* Float and glow-pulse animations removed to fix scroll lag */
   transition: all var(--transition-smooth);
 }
 

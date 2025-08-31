@@ -470,33 +470,16 @@
   }
 }
 
-/* Enhanced Floating Animation - Mobile Optimized */
+/* Floating animation removed to fix scroll lag */
 .floating-animation {
-  animation: float 6s ease-in-out 2.5s infinite, subtleGlow 4s ease-in-out 4s infinite alternate;
-  will-change: transform, box-shadow;
+  /* Animation removed for better scroll performance */
+  will-change: auto;
   contain: layout style;
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translate3d(0, 0px, 0) rotate(0deg);
-  }
-  33% {
-    transform: translate3d(0, -8px, 0) rotate(0.5deg);
-  }
-  66% {
-    transform: translate3d(0, -15px, 0) rotate(-0.5deg);
-  }
-}
+/* Float keyframes removed to fix scroll lag */
 
-@keyframes subtleGlow {
-  0% {
-    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1);
-  }
-  100% {
-    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2), 0 0 40px rgba(236, 72, 153, 0.1);
-  }
-}
+/* Subtle glow keyframes removed to fix scroll lag */
 
 .section-title {
   font-size: 1.75rem;
@@ -1440,7 +1423,7 @@
   height: 4px;
   background: var(--primary-color);
   border-radius: 50%;
-  animation: particleFloat 4s ease-in-out infinite;
+  /* Particle float animation removed to fix scroll lag */
 }
 
 .particle:nth-child(1) { top: 20%; left: 30%; animation-delay: 0s; }
@@ -1661,16 +1644,7 @@
   100% { transform: rotateX(360deg) rotateY(360deg); }
 }
 
-@keyframes particleFloat {
-  0%, 100% {
-    transform: translateY(0px) scale(1);
-    opacity: 0.7;
-  }
-  50% {
-    transform: translateY(-20px) scale(1.2);
-    opacity: 1;
-  }
-}
+/* Particle float keyframes removed to fix scroll lag */
 
 @keyframes scanningMove {
   0% {
@@ -3790,7 +3764,7 @@
   height: 4px;
   background: linear-gradient(45deg, #10b981, #3b82f6);
   border-radius: 50%;
-  animation: particleFloat 30s linear infinite; /* Reduced particle animation frequency */
+  /* Particle float animation removed to fix scroll lag */
 }
 
 .particle-1 {
@@ -3823,22 +3797,7 @@
   animation-duration: 28s;
 }
 
-@keyframes particleFloat {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100px) rotate(360deg);
-    opacity: 0;
-  }
-}
+/* Particle float keyframes removed to fix scroll lag */
 
 .data-streams {
   position: absolute;
@@ -4476,7 +4435,7 @@
   background: var(--primary-color);
   border-radius: 50%;
   opacity: 0.6;
-  animation: particleFloat 12s linear infinite;
+  /* Particle float animation removed to fix scroll lag */
 }
 
 .particle-0 {
@@ -4503,23 +4462,7 @@
   background: var(--primary-color);
 }
 
-@keyframes particleFloat {
-  0% {
-    transform: translateY(100vh) scale(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  90% {
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateY(-100px) scale(0);
-    opacity: 0;
-  }
-}
+/* Particle float keyframes removed to fix scroll lag */
 
 .footer-content {
   position: relative;
